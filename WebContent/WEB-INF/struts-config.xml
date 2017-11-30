@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config 
+PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" 
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans type="org.struts.action.ActionFormBean">
+		<form-bean name="loginForm" type="com.javaquarium.beans.web.LoginVO"></form-bean>
+		<form-bean name="poissonForm" type="com.javaquarium.beans.web.PoissonVO"></form-bean>
+	</form-beans>
+
+	<action-mappings>
+		<action path="/listerEspece"
+		type="org.springframework.web.struts.DelegatingActionProxy" >
+			<forward name="success" path="/jsp/UC01_especes.jsp"/>
+			<forward name="failed" path="/jsp/fail.jsp"/>
+		</action>
+		<action path="/login" input="/jsp/UC00_login.jsp" scope="request" name="loginForm" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do" redirect="true"/>
+			<forward name="form_error" path="/jsp/UC00_login.jsp" redirect="true"/>
+			<forward name="user_already_connected" path="/listerEspece.do" redirect="true"/></action>
+		<action path="/ajouterNouveauPoisson" input="/jsp/UC02_ajout.jsp" scope="request" name="poissonForm" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="listerEspece.do" redirect="true" />
+			<forward name="failure" path="/jsp/UC02_ajout.jsp" redirect="true" />
+		</action>
+			
+		
+	</action-mappings>
+	
+	<message-resources parameter="ApplicationResources"/>
+	
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/applicationContext.xml"/>
+	</plug-in>
+</struts-config>

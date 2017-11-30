@@ -21,7 +21,9 @@
 		<property name="service"> <ref bean="myPoissonService"/></property>
 	</bean>
 	
-	
+	<bean name="/ajouterNouveauPoisson" class="com.javaquarium.action.AjoutAction">
+		<property name="service"> <ref bean="myPoissonService"/></property>
+	</bean>
 	
 </beans>
 

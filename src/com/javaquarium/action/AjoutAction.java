@@ -17,8 +17,14 @@ import com.javaquarium.dao.PoissonDAO;
 public class AjoutAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
-	private IPoissonService poissonService;
+	private IPoissonService service;
 	
+	/**
+	 * @param service the service to set
+	 */
+	public void setService(IPoissonService service) {
+		this.service = service;
+	}
 	
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
@@ -27,7 +33,7 @@ public class AjoutAction extends Action {
 		// on récupére le formulaire qui a comme donnée des PoissonVO
 		PoissonVO poissonVO = (PoissonVO) form;	
 		//on va insérer tout ça dans la base de donnée
-		poissonService.add(poissonVO);
+		service.add(poissonVO);
 		
 		
 		return mapping.findForward(FW_SUCCESS);

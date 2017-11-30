@@ -32,7 +32,8 @@
 					<td><bean:write name="MonPoisson" property="couleur" /></td>
 					<td><bean:write name="MonPoisson" property="dimension" /></td>	
 					<td><bean:write name="MonPoisson" property="prix" /></td>
-					<td>Test</td>
+					<td></td>
+					<td></td>
 				</tr>
 			</logic:iterate>
 		</tbody>

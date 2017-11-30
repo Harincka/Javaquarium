@@ -54,6 +54,7 @@ public class PoissonService implements IPoissonService {
 		final PoissonDO poisson = new PoissonDO();
 		String[] partsDimension = poissonVO.getDimension().split("x");
 		
+		poisson.setNom(poissonVO.getNom());
 		poisson.setPrix(poissonVO.getPrix());
 		poisson.setCouleur(poissonVO.getCouleur());
 		poisson.setLongueur(Float.parseFloat(partsDimension[0]));

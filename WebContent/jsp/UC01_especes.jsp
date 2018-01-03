@@ -9,6 +9,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.3.0/pure-min.css">
 <title><bean:message key="message.bienvenue" /></title>
+<style scoped>
+	.button-remove{
+		background : rgb(202, 60, 60);
+		color : white;
+	}
+</style>
 </head>
 <body>
 	<table class="pure-table">
@@ -19,7 +25,6 @@
 				<th><bean:message key="tableau.couleur"/></th>
 				<th><bean:message key="tableau.dimension"/></th>
 				<th><bean:message key="tableau.prix"/></th>
-				<th><bean:message key="tableau.detail"/></th>
 				<th><bean:message key="tableau.aquarium"/></th>
 			</tr>
 		</thead>
@@ -32,8 +37,10 @@
 					<td><bean:write name="MonPoisson" property="couleur" /></td>
 					<td><bean:write name="MonPoisson" property="dimension" /></td>	
 					<td><bean:write name="MonPoisson" property="prix" /></td>
-					<td></td>
-					<td></td>
+					<td>
+						<a class="pure-button pure-button-primary" href=""><bean:message key="message.listerespece.button.add"/></a>
+						<a class="pure-button button-remove" href=""><bean:message key="message.listerespece.button.remove"/></a>
+					</td>
 				</tr>
 			</logic:iterate>
 		</tbody>

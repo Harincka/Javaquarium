@@ -14,6 +14,8 @@ import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.business.IUserService;
 import com.javaquarium.business.UserService;
 
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
 
 public class LoginAction extends Action {
 
@@ -32,25 +34,28 @@ public class LoginAction extends Action {
 	public static final String SESSION_USERNAME = "login";
 
 	
+	@SuppressWarnings("deprecation")
 	public ActionForward execute(final ActionMapping mapping, 
 			final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
 		String forward = FW_SUCCESS;
-
+		
+		IUserService userService = new UserService();
+		
 		String login = ((LoginVO) form).getLogin();
 		String password = ((LoginVO) form).getPassword();
-
-		if (true) {
+		
+		if (userService.validateLogin(login, password)) {
 			req.getSession()
 			.setAttribute(SESSION_USERNAME, ((LoginVO) (form)).getLogin());
 			req.getSession();
 		} else {
-			/* ActionErrors errors = new ActionErrors();
+			 ActionErrors errors = new ActionErrors();
 		errors.add("errors.field.login.incorrect.user_or_password", 
 				new ActionMessage("errors.field.login.incorrect.user_or_password"));
 		saveErrors(req, errors);
-			forward = FW_FORM_ERROR; */
+			forward = FW_FORM_ERROR; 
 		} 
 		
 		return mapping.findForward(forward);

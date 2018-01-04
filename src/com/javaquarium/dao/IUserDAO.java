@@ -11,8 +11,8 @@ import com.javaquarium.beans.data.UserDO;
  */
 public interface IUserDAO {
 
-	List<UserDO> getAllUser();
-	UserDO getUser(String name);
-	void addUser(UserDO u);
+	List<UserDO> getAll();
+	UserDO checkLogin(String login,String mdp);
+	void add(UserDO u);
 
 }

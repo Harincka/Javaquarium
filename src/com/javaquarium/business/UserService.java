@@ -19,7 +19,7 @@ import com.javaquarium.util.PasswordHashUtils;
  */
 public class UserService implements IUserService {
 
-	private IUserDAO userDao;
+	private IUserDAO userDao = new UserDAO();
 	
 	/**
 	 * @param userDao the userDao to set
@@ -29,7 +29,7 @@ public class UserService implements IUserService {
 	}
 
 	public List<UserVO> getAllUser() {
-		final List<UserDO> listUser = userDao.getAllUser();
+		final List<UserDO> listUser = userDao.getAll();
 		List<UserVO> users = new ArrayList<UserVO>(listUser.size());
 		for (final UserDO user : listUser) {
 			users.add(map(user));
@@ -39,7 +39,7 @@ public class UserService implements IUserService {
 	
 	public void addUser(UserVO user) {
 		UserDO u = this.map(user);
-		userDao.addUser(u);
+		userDao.add(u);
 	}
 
 	public UserVO map(final UserDO user) {
@@ -80,34 +80,18 @@ public class UserService implements IUserService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.javaquarium.business.ILoginService#getUser(java.lang.String)
-	 */
-	@Override
-	public UserVO getUser(String login) {
-		return map(userDao.getUser(login));
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see
 	 * com.javaquarium.business.IUserService#validateLogin(java.lang.String,
 	 * java.lang.String)
 	 */
 	@Override
 	public boolean validateLogin(String login, String password) {
-		boolean returnVal = false;
-		UserDO databaseUser = userDao.getUser(login);
+		System.out.println("test premat");
+		UserDO databaseUser = userDao.checkLogin(login, password);
 		if (databaseUser != null) {
-			try {
-				returnVal = PasswordHashUtils.validatePassword(password, databaseUser.getPassword());
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			} catch (InvalidKeySpecException e) {
-				e.printStackTrace();
-			}
+			return true;
 		}
-		return returnVal;
+		return false;
 	}
 
 }

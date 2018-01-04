@@ -11,10 +11,8 @@ import com.javaquarium.util.HibernateUtils;
 
 public class UserDAO implements IUserDAO {
 
-	
-	
 	@Override
-	public List<UserDO> getAllUser() {
+	public List<UserDO> getAll() {
 		Session s = HibernateUtils.getSession();
 		try {
 			Query q = s.createQuery("from UserDO");
@@ -26,12 +24,13 @@ public class UserDAO implements IUserDAO {
 
 	
 	@Override
-	public UserDO getUser(String login) {
+	public UserDO checkLogin(String login,String pass) {
 		Session s = HibernateUtils.getSession();
 		UserDO u = null;
 		try {
-			Query q = s.createQuery("from UserDO where login= :myLogin");
+			Query q = s.createQuery("from UserDO where login= :myLogin and password= :pass");
 			q.setString("myLogin", login);
+			q.setString("pass", pass);
 			u = (UserDO) q.uniqueResult();
 		} finally {
 			s.close();
@@ -40,7 +39,7 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public void addUser(UserDO u) {
+	public void add(UserDO u) {
 		Session s = HibernateUtils.getSession();
 		try {
 			Transaction t = s.beginTransaction();
@@ -50,5 +49,5 @@ public class UserDAO implements IUserDAO {
 			s.close();
 		}
 	}
-
+	
 }

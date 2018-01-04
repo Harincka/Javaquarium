@@ -22,9 +22,8 @@ public class UserDAO implements IUserDAO {
 		}
 	}
 
-	
 	@Override
-	public UserDO checkLogin(String login,String pass) {
+	public UserDO checkLogin(String login, String pass) {
 		Session s = HibernateUtils.getSession();
 		UserDO u = null;
 		try {
@@ -49,5 +48,19 @@ public class UserDAO implements IUserDAO {
 			s.close();
 		}
 	}
-	
+
+	@Override
+	public UserDO getUser(String login) {
+		Session s = HibernateUtils.getSession();
+		UserDO u = null;
+		try {
+			Query q = s.createQuery("from UserDO where login= :myLogin");
+			q.setString("myLogin", login);
+			u = (UserDO) q.uniqueResult();
+		} finally {
+			s.close();
+		}
+		return u;
+	}
+
 }

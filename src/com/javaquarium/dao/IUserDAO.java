@@ -12,7 +12,11 @@ import com.javaquarium.beans.data.UserDO;
 public interface IUserDAO {
 
 	List<UserDO> getAll();
-	UserDO checkLogin(String login,String mdp);
+
+	UserDO checkLogin(String login, String mdp);
+
 	void add(UserDO u);
+	
+	UserDO getUser(String login);
 
 }

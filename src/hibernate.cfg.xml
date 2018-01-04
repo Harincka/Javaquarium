@@ -19,12 +19,13 @@
 		<property name="use_sql_comments">true</property>
 
 		<!-- Comportement pur la conservation des tables (update, create, none) -->
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 
 
 		<!-- Fichiers à mapper -->
 		<mapping class="com.javaquarium.beans.data.PoissonDO" />
 		<mapping class="com.javaquarium.beans.data.UserDO" />
+		<mapping class="com.javaquarium.beans.data.AquariumDO" />
 
 	</session-factory>
 </hibernate-configuration>

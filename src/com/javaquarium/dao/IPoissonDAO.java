@@ -20,5 +20,7 @@ public interface IPoissonDAO {
 	 * @param poissonDO
 	 */
 	void add(PoissonDO poissonDO);
+	
+	PoissonDO getPoisson(String name);
 
 }

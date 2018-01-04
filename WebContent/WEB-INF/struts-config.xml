@@ -9,8 +9,7 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 	</form-beans>
 
 	<action-mappings>
-		<action path="/listerEspece"
-		type="org.springframework.web.struts.DelegatingActionProxy" >
+		<action path="/listerEspece" type="org.springframework.web.struts.DelegatingActionProxy" >
 			<forward name="success" path="/jsp/UC01_especes.jsp"/>
 			<forward name="failed" path="/jsp/fail.jsp"/>
 		</action>
@@ -22,8 +21,19 @@ PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
 			<forward name="success" path="listerEspece.do" redirect="true" />
 			<forward name="failure" path="/jsp/UC02_ajout.jsp" redirect="true" />
 		</action>
+		<action path="/ajouter" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do" redirect="true"/>
+		</action>
+		<action path="/enlever" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do" redirect="true"/>
+		</action>
+		<action path="/save" type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do" redirect="true"/>
+		</action>
+		<action path="/clear"  type="org.springframework.web.struts.DelegatingActionProxy">
+			<forward name="success" path="/listerEspece.do" redirect="true"/>
+		</action>
 			
-		
 	</action-mappings>
 	
 	<message-resources parameter="ApplicationResources"/>

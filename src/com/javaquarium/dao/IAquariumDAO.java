@@ -8,7 +8,7 @@ public interface IAquariumDAO {
 
 	List<AquariumDO> getUserAllAquariumPoisson(final String login);
 	
-	AquariumDO getUserPoisson(final String login, final String espece);
+	AquariumDO getAquarium(final String login, final String espece);
 	
 	void addAquariumPoisson(final AquariumDO aquarium);
 	

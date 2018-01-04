@@ -10,7 +10,7 @@ public interface IAquariumService {
 	
 	AquariumDO getUserPoisson(final String login, final String espece);
 	
-	void addAquariumPoisson(final String login, final String espece);
+	void addAquariumPoisson(final String login, final String espece ,int count);
 	
 	void removeAllAquariumPoisson(final String login);
 }

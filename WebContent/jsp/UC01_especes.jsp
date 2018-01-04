@@ -1,3 +1,5 @@
+<%@page import="com.javaquarium.action.AjoutPoissonAquariumAction"%>
+<%@page import="com.javaquarium.util.SessionUtils"%>
 <%@page import="com.javaquarium.action.ListerEspeceAction"%>
 <%@ taglib uri="/WEB-INF/tld/struts-bean-1.2.tld" prefix="bean"%>
 <%@ taglib uri="/WEB-INF/tld/struts-html-1.2.tld" prefix="html"%>
@@ -14,9 +16,20 @@
 		background : rgb(202, 60, 60);
 		color : white;
 	}
+	.div-entete a, .div-entete p{
+		display : inline-block;
+	}
 </style>
 </head>
 <body>
+	<h1><bean:message key="message.bienvenue"/></h1>
+	<div class="div-entete">
+		<p><bean:message key="message.listerespece.title.aquarium"/> ( <%=SessionUtils.countNumberOfPoisson(request.getSession().getAttribute(AjoutPoissonAquariumAction.AQUARIUM)) %> )</p>
+		
+		<a class="pure-button" href="/Javaquarium/save.do"><bean:message key="message.listerespece.button.save.espece.title"/></a>
+		<a class="pure-button" href="/Javaquarium/clear.do"><bean:message key="message.listerespece.button.empty.espece.title"/></a>
+	</div>
+	
 	<table class="pure-table">
 		<thead>
 			<tr>
@@ -38,8 +51,8 @@
 					<td><bean:write name="MonPoisson" property="dimension" /></td>	
 					<td><bean:write name="MonPoisson" property="prix" /></td>
 					<td>
-						<a class="pure-button pure-button-primary" href=""><bean:message key="message.listerespece.button.add"/></a>
-						<a class="pure-button button-remove" href=""><bean:message key="message.listerespece.button.remove"/></a>
+						<a class="pure-button pure-button-primary" href="/Javaquarium/ajouter.do?name=<bean:write name="MonPoisson" property="nom"/>"><bean:message key="message.listerespece.button.add"/></a>
+						<a class="pure-button button-remove" href="/Javaquarium/enlever.do?name=<bean:write name="MonPoisson" property="nom"/>"><bean:message key="message.listerespece.button.remove"/></a>
 					</td>
 				</tr>
 			</logic:iterate>

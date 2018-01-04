@@ -39,14 +39,14 @@ public class AquariumService implements IAquariumService{
 	@Override
 	public AquariumDO getUserPoisson(String login, String espece) {
 		// TODO Auto-generated method stub
-		return dao.getUserPoisson(login, espece);
+		return dao.getAquarium(login, espece);
 	}
 
 	@Override
-	public void addAquariumPoisson(String login, String espece) {
+	public void addAquariumPoisson(String login, String espece, int count) {
 		// TODO Auto-generated method stub
 		
-		AquariumDO aquariumPoisson = dao.getUserPoisson(login, espece);
+		AquariumDO aquariumPoisson = dao.getAquarium(login, espece);
 		
 		//Si le poisson n'existe pas dans l'aquarium on lui donne les paramètres pour l'insérer
 		if(aquariumPoisson == null) {
@@ -60,6 +60,8 @@ public class AquariumService implements IAquariumService{
 			aquariumPoisson.setId_poisson(poisson);
 			aquariumPoisson.setId_user(user);
 		}
+		
+		aquariumPoisson.setSomme(count);
 		
 		dao.addAquariumPoisson(aquariumPoisson);
 		

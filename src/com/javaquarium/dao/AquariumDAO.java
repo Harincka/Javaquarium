@@ -36,7 +36,7 @@ public class AquariumDAO implements IAquariumDAO{
 	}
 
 	@Override
-	public AquariumDO getUserPoisson(String login, String espece) {
+	public AquariumDO getAquarium(String login, String espece) {
 		// TODO Auto-generated method stub
 		Session s = HibernateUtils.getSession();
 		AquariumDO aquariumPoisson = null;
@@ -59,18 +59,19 @@ public class AquariumDAO implements IAquariumDAO{
 	}
 
 	@Override
-	public void addAquariumPoisson(AquariumDO aquariumPoisson) {
+	public void addAquariumPoisson(final AquariumDO aquariumPoisson) {
 		// TODO Auto-generated method stub
 		
 		Session s = HibernateUtils.getSession();
 		
-		Transaction t = s.beginTransaction();
+		try {
+			Transaction t = s.beginTransaction();
 		
-		s.saveOrUpdate(aquariumPoisson);
-		t.commit();
-		
-		s.close();
-		
+			s.saveOrUpdate(aquariumPoisson);
+			t.commit();
+		} finally {
+			s.close();
+		}
 	}
 
 	@Override
@@ -82,8 +83,8 @@ public class AquariumDAO implements IAquariumDAO{
 		final IUserDAO userDAO = new UserDAO();
 		final UserDO user = userDAO.getUser(login);
 		
-		Query q = s.createQuery("delete AquariumDO where user= :userid");
-		q.setString("user_id",user.getId().toString());
+		Query q = s.createQuery("delete AquariumDO where user_id= :userid");
+		q.setString("userid",user.getId().toString());
 		q.executeUpdate();
 		
 		s.close();

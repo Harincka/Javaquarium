@@ -46,7 +46,7 @@ public class PoissonDAO implements IPoissonDAO {
 		Session s = HibernateUtils.getSession();
 		PoissonDO poisson = null;
 		
-		Query q = s.createQuery("from Poisson where nom= :nomPoisson");
+		Query q = s.createQuery("from PoissonDO where nom= :nomPoisson");
 		q.setString("nomPoisson", name);
 		
 		poisson = (PoissonDO) q.uniqueResult();

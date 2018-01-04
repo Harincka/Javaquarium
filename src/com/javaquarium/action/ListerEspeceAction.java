@@ -11,6 +11,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.beans.web.PoissonVO;
+import com.javaquarium.business.IAquariumService;
 import com.javaquarium.business.IPoissonService;
 import com.javaquarium.business.PoissonService;
 
@@ -24,9 +25,10 @@ public class ListerEspeceAction extends Action {
 	public void setService(IPoissonService service) {
 		this.service = service;
 	}
-
+	
 	private static final String FW_SUCCESS = "success";
 	public static final String SESSION_LIST_POISSON = "LISTE_P";
+	
 	
 	public ActionForward execute (final ActionMapping mapping, final ActionForm form, final HttpServletRequest req, final HttpServletResponse res){
 		

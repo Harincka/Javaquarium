@@ -25,6 +25,11 @@
 		<property name="service"> <ref bean="myPoissonService"/></property>
 	</bean>
 	
+	<bean name="/ajouter" class="com.javaquarium.action.AjoutPoissonAquariumAction"/>
+	<bean name="/enlever" class="com.javaquarium.action.EnleverPoissonAquariumAction"/>
+	<bean name="/save" class="com.javaquarium.action.SaveAquariumAction"/>
+	<bean name="/clear" class="com.javaquarium.action.ClearAquariumAction"/>
+	
 </beans>
 
 

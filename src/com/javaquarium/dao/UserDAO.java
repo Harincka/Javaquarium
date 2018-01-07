@@ -9,6 +9,10 @@ import org.hibernate.Transaction;
 import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.util.HibernateUtils;
 
+/**
+ * @author Aurelien
+ *
+ */
 public class UserDAO implements IUserDAO {
 
 	@Override

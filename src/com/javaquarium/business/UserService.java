@@ -5,17 +5,18 @@ import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.beans.data.UserDO;
 import com.javaquarium.beans.web.UserVO;
 import com.javaquarium.dao.IUserDAO;
 import com.javaquarium.dao.UserDAO;
 import com.javaquarium.util.PasswordHashUtils;
 
+
 /**
- * User Service.
- * 
- * @author seb
- * 
+ * @author Aurelien
+ *
+ * Classic service
  */
 public class UserService implements IUserService {
 
@@ -48,31 +49,20 @@ public class UserService implements IUserService {
 			u = new UserVO();
 			u.setLogin(user.getLogin());
 			u.setPassword(null);
-			u.setRepeatPassword(null);
+			u.setRepeatpassword(null);
 		}
 		return u;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.javaquarium.business.ILoginService#map(com.javaquarium.beans.web.
-	 * UserVO)
-	 */
+	
 	@Override
 	public UserDO map(UserVO user) {
 		UserDO u = null;
 		if (user != null) {
 			u = new UserDO();
 			u.setLogin(user.getLogin());
-			try {
-				u.setPassword(PasswordHashUtils.createHash(user.getPassword()));
-			} catch (NoSuchAlgorithmException e) {
-				e.printStackTrace();
-			} catch (InvalidKeySpecException e) {
-				e.printStackTrace();
-			}
+			u.setPassword(user.getPassword());
+
 		}
 		return u;
 	}

@@ -10,11 +10,11 @@
 	</head>
 	<body class="container">
 		<h1><bean:message key="message.login.title.headertitle"/></h1>
-		<hr />
+		<hr/>
     <ul class="list-group">
       <html:errors/>
     </ul>
-    <html:form styleClass="form-horizontal" action="login">
+    <html:form styleClass="form-horizontal" action="/login.do">
       <div class="form-group">
 		    <label for="login" class="col-sm-3 control-label">
 		      <bean:message key="message.login.input.name.login"/>
@@ -37,12 +37,10 @@
 			    <html:submit property="submit" styleClass="btn btn-success">
 			      <bean:message key="message.login.button.name.submit"/>
 			    </html:submit>
-		      <!--<html:reset property="reset" styleClass="btn btn-danger">
-		        <bean:message key="message.login.button.name.reset"/>
-		      </html:reset>
+		      
           <a class="btn btn-primary col-sm-offset-1" href="/Javaquarium/jsp/UC03_register.jsp">
             <bean:message key="message.login.button.register"/>
-          </a> -->
+          </a> 
 	      </div>
       </div>
     </html:form>

@@ -10,6 +10,12 @@ import org.hibernate.Session;
 import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.util.HibernateUtils;
 
+
+/**
+ * @author Aurelien
+ *
+ */
+
 public class PoissonDAO implements IPoissonDAO {
 	
 	public void add(PoissonDO poisson){

@@ -4,7 +4,7 @@
 <beans>
 	<bean id="myPoissonDao" class="com.javaquarium.dao.PoissonDAO"/>
 	<bean id="myUserDao" class="com.javaquarium.dao.UserDAO"/>
-	
+		
 	<bean id="myPoissonService" class="com.javaquarium.business.PoissonService">
 		<property name="poissonDao"> <ref bean="myPoissonDao"/> </property>
 	</bean>
@@ -12,11 +12,12 @@
 	<bean id="myUserService" class="com.javaquarium.business.UserService">
 		<property name="userDao"> <ref bean="myUserDao"/> </property>
 	</bean>
-	
-	<bean name="/login" class="com.javaquarium.action.LoginAction">
+	<bean name="/login" class="com.javaquarium.action.LoginAction" singleton="true">
 		<property name="userService"> <ref bean="myUserService"/></property>
 	</bean>
-	
+	<bean name="/register" class="com.javaquarium.action.RegisterAction">
+		<property name="userService"> <ref bean="myUserService"/></property>
+	</bean>
 	<bean name="/listerEspece" class="com.javaquarium.action.ListerEspeceAction">
 		<property name="service"> <ref bean="myPoissonService"/></property>
 	</bean>

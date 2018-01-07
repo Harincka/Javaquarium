@@ -12,17 +12,18 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
+
+
 /**
- * Java bean of the web login object.
- * 
- * @author Benoit
+ * @author Aurelien
+ *
  */
 public class UserVO extends ActionForm {
 
 	private static final long serialVersionUID = 1L;
 	private String login;
 	private String password;
-	private String repeatPassword;
+	private String repeatpassword;
 
 	/**
 	 * @return the login
@@ -48,25 +49,19 @@ public class UserVO extends ActionForm {
 
 	/**
 	 * @param password
-	 *            the password to set
 	 */
 	public void setPassword(final String password) {
 		this.password = password;
 	}
 
-	/**
-	 * @return the repeated password
-	 */
-	public String getRepeatPassword() {
-		return repeatPassword;
+	
+
+	public String getRepeatpassword() {
+		return repeatpassword;
 	}
 
-	/**
-	 * @param password
-	 *            the password to set
-	 */
-	public void setRepeatPassword(final String password) {
-		this.repeatPassword = password;
+	public void setRepeatpassword(String repeatpassword) {
+		this.repeatpassword = repeatpassword;
 	}
 
 	/*
@@ -98,19 +93,11 @@ public class UserVO extends ActionForm {
 			errors.add("password",
 					new ActionMessage("errors.field.notFound", properties.get("message.register.input.name.password")));
 		}
-		if (StringUtils.isEmpty(getRepeatPassword())) {
+		if (StringUtils.isEmpty(getRepeatpassword())) {
 			errors.add(
 					"repeatPassword",
 					new ActionMessage("errors.field.notFound", properties
 							.get("message.register.input.name.repeat_password")));
-		}
-		if (getPassword().length() < 4) {
-			errors.add("password_too_small",
-					new ActionMessage("errors.field.minlength", properties.get("message.register.input.name.password"),
-							"4"));
-		}
-		if (getPassword().compareTo(getRepeatPassword()) != 0) {
-			errors.add("password_not_similar", new ActionMessage("errors.field.password.repeat"));
 		}
 		return errors;
 	}

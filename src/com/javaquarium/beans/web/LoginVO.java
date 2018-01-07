@@ -13,9 +13,9 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
 /**
- * @author seb
+ * @author Aurelien
+ *
  */
-
 public class LoginVO extends ActionForm {
 
 	private static final long serialVersionUID = 1L;

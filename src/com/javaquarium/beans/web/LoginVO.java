@@ -55,9 +55,6 @@ public class LoginVO extends ActionForm {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.apache.struts.action.ActionForm#validate(org.apache.struts.action
-	 * .ActionMapping, javax.servlet.http.HttpServletRequest)
 	 */
 	@Override
 	public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request) {

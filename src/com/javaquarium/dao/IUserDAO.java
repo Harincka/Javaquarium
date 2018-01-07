@@ -7,16 +7,31 @@ import com.javaquarium.beans.data.UserDO;
 /**
  * 
  * @author Aurelien
- *
+ * classic Interface DAO
  */
 public interface IUserDAO {
 
+	/**
+	 * @return List<UserDO>
+	 */
 	List<UserDO> getAll();
 
-	UserDO checkLogin(String login, String mdp);
+	/**
+	 * @param login
+	 * @param mdp
+	 * @return UserDO
+	 */
+	UserDO checkLogin(final String login, final String mdp);
 
-	void add(UserDO u);
+	/**
+	 * @param u
+	 */
+	void add(final UserDO u);
 	
-	UserDO getUser(String login);
+	/**
+	 * @param login
+	 * @return UserDO
+	 */
+	UserDO getUser(final String login);
 
 }

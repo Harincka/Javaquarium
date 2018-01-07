@@ -7,21 +7,25 @@ import com.javaquarium.beans.data.PoissonDO;
 
 /**
  * @author Aurelien
- *
+ * classic InterfaceDAO
  */
 public interface IPoissonDAO {
 
 	/**
 	 * Classic DAO
-	 * @return
+	 * @return List<PoissonDO>
 	 */
 	List<PoissonDO> getAll();
 	/**
 	 * Classic DAO
 	 * @param poissonDO
 	 */
-	void add(PoissonDO poissonDO);
+	void add(final PoissonDO poissonDO);
 	
-	PoissonDO getPoisson(String name);
+	/**
+	 * @param name
+	 * @return PoissonDO
+	 */
+	PoissonDO getPoisson(final String name);
 
 }

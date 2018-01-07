@@ -21,7 +21,7 @@
 	
 	<div class="pure-control-group">
 		<bean:message key="tableau.nom" />
-		<html:text property="nom" />
+		<html:text property="name" />
 	</div>
 	
 	<div class="pure-control-group">

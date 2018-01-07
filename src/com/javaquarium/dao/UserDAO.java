@@ -11,27 +11,34 @@ import com.javaquarium.util.HibernateUtils;
 
 /**
  * @author Aurelien
- *
+ * classic DAO
  */
 public class UserDAO implements IUserDAO {
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.dao.IUserDAO#getAll()
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserDO> getAll() {
-		Session s = HibernateUtils.getSession();
+		final Session s = HibernateUtils.getSession();
 		try {
-			Query q = s.createQuery("from UserDO");
+			final Query q = s.createQuery("from UserDO");
 			return (List<UserDO>) q.list();
 		} finally {
 			s.close();
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.dao.IUserDAO#checkLogin(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public UserDO checkLogin(String login, String pass) {
-		Session s = HibernateUtils.getSession();
+	public UserDO checkLogin(final String login, final String pass) {
+		final Session s = HibernateUtils.getSession();
 		UserDO u = null;
 		try {
-			Query q = s.createQuery("from UserDO where login= :myLogin and password= :pass");
+			final Query q = s.createQuery("from UserDO where login= :myLogin and password= :pass");
 			q.setString("myLogin", login);
 			q.setString("pass", pass);
 			u = (UserDO) q.uniqueResult();
@@ -41,11 +48,14 @@ public class UserDAO implements IUserDAO {
 		return u;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.dao.IUserDAO#add(com.javaquarium.beans.data.UserDO)
+	 */
 	@Override
-	public void add(UserDO u) {
-		Session s = HibernateUtils.getSession();
+	public void add(final UserDO u) {
+		final Session s = HibernateUtils.getSession();
 		try {
-			Transaction t = s.beginTransaction();
+			final Transaction t = s.beginTransaction();
 			s.save(u);
 			t.commit();
 		} finally {
@@ -53,12 +63,15 @@ public class UserDAO implements IUserDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.dao.IUserDAO#getUser(java.lang.String)
+	 */
 	@Override
-	public UserDO getUser(String login) {
-		Session s = HibernateUtils.getSession();
+	public UserDO getUser(final String login) {
+		final Session s = HibernateUtils.getSession();
 		UserDO u = null;
 		try {
-			Query q = s.createQuery("from UserDO where login= :myLogin");
+			final Query q = s.createQuery("from UserDO where login= :myLogin");
 			q.setString("myLogin", login);
 			u = (UserDO) q.uniqueResult();
 		} finally {

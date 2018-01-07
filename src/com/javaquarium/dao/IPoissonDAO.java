@@ -5,14 +5,14 @@ import java.util.List;
 import com.javaquarium.beans.data.PoissonDO;
 
 /**
- * @author seb
- *
+ * @author Aurelien
+ * classic InterfaceDAO
  */
 public interface IPoissonDAO {
 
 	/**
 	 * Classic DAO
-	 * @return
+	 * @return List<PoissonDO>
 	 */
 	List<PoissonDO> getAll();
 	/**
@@ -21,6 +21,10 @@ public interface IPoissonDAO {
 	 */
 	void add(PoissonDO poissonDO);
 	
+	/**
+	 * @param name
+	 * @return PoissonDO
+	 */
 	PoissonDO getPoisson(String name);
 
 }

@@ -2,6 +2,10 @@ package com.javaquarium.beans.web;
 
 import org.apache.struts.action.ActionForm;
 
+/**
+ * @author Aurelien
+ *
+ */
 public class PoissonVO extends ActionForm {
 
 	private static final long serialVersionUID = -123456789L;
@@ -22,7 +26,7 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 	
@@ -35,7 +39,7 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 	/**
@@ -47,7 +51,7 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param couleur the couleur to set
 	 */
-	public void setCouleur(String couleur) {
+	public void setCouleur(final String couleur) {
 		this.couleur = couleur;
 	}
 	/**
@@ -59,7 +63,7 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param dimension the dimension to set
 	 */
-	public void setDimension(String dimension) {
+	public void setDimension(final String dimension) {
 		this.dimension = dimension;
 	}
 	/**
@@ -71,7 +75,7 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param prix the prix to set
 	 */
-	public void setPrix(Integer prix) {
+	public void setPrix(final Integer prix) {
 		this.prix = prix;
 	}
 
@@ -84,13 +88,14 @@ public class PoissonVO extends ActionForm {
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	
 	public PoissonVO(){}
 	
-	public PoissonVO(String nom, String espece, String description, String couleur, String dimension, Integer prix){
+	public PoissonVO(final String name, final String espece, final String description, final String couleur,
+			final String dimension, final Integer prix){
 		this.description = description;
 		this.couleur = couleur;
 		this.dimension = dimension;

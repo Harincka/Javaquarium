@@ -11,6 +11,11 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+/**
+ * @author Aurelien
+ *
+ * Classic Action
+ */
 public class AjoutPoissonAquariumAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";

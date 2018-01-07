@@ -1,6 +1,5 @@
 package com.javaquarium.action;
 
-import java.io.Console;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,11 +12,18 @@ import org.apache.struts.action.ActionMapping;
 
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
-import com.mysql.jdbc.log.Log;
 
+
+/**
+ * @author Aurelien
+ *
+ * Classic Action
+ */
 public class SaveAquariumAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
+	
+	private IAquariumService service;
 	
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
@@ -28,7 +34,7 @@ public class SaveAquariumAction extends Action {
 		Map<String, Integer> aquarium = (Map<String, Integer>) req.getSession().getAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM);
 		
 
-		IAquariumService service = new AquariumService();
+		service = new AquariumService();
 		
 		//Si on a un aquarium en session, on l'ajoute en base
 		if(aquarium != null) {

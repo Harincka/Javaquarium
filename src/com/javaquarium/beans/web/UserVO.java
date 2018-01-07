@@ -12,8 +12,6 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 
-
-
 /**
  * @author Aurelien
  *
@@ -60,7 +58,7 @@ public class UserVO extends ActionForm {
 		return repeatpassword;
 	}
 
-	public void setRepeatpassword(String repeatpassword) {
+	public void setRepeatpassword(final String repeatpassword) {
 		this.repeatpassword = repeatpassword;
 	}
 

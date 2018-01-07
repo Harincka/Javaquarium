@@ -13,6 +13,11 @@ import org.apache.struts.action.ActionMapping;
 import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 
+/**
+ * @author Aurelien
+ *
+ * Classic Action
+ */
 public class ClearAquariumAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";

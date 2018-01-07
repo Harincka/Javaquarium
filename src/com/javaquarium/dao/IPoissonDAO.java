@@ -4,8 +4,9 @@ import java.util.List;
 
 import com.javaquarium.beans.data.PoissonDO;
 
+
 /**
- * @author seb
+ * @author Aurelien
  *
  */
 public interface IPoissonDAO {

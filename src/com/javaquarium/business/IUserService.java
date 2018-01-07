@@ -8,7 +8,7 @@ import com.javaquarium.beans.web.UserVO;
 /**
  * Interface of PoissonService.
  * Classic Service
- * @author seb
+ * @author Aurelien
  */
 public interface IUserService {
 

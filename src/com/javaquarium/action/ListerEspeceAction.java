@@ -16,6 +16,11 @@ import com.javaquarium.business.AquariumService;
 import com.javaquarium.business.IAquariumService;
 import com.javaquarium.business.IPoissonService;
 
+/**
+ * @author Aurelien
+ *
+ * Classic Action
+ */
 public class ListerEspeceAction extends Action {
 	
 	private IPoissonService service;

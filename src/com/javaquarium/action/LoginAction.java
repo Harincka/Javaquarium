@@ -12,7 +12,6 @@ import org.apache.struts.action.ActionMessage;
 
 import com.javaquarium.beans.web.LoginVO;
 import com.javaquarium.business.IUserService;
-import com.javaquarium.business.UserService;
 
 
 public class LoginAction extends Action {
@@ -38,9 +37,6 @@ public class LoginAction extends Action {
 			final HttpServletResponse res) {
 
 		String forward = FW_SUCCESS;
-		
-		IUserService userService = new UserService();
-		
 		String login = ((LoginVO) form).getLogin();
 		String password = ((LoginVO) form).getPassword();
 		

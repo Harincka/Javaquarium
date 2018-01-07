@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author johann
+ *
+ */
 @Entity
 @Table(name="User")
 public class UserDO {
@@ -22,26 +26,44 @@ public class UserDO {
 	@Column(name= "password")
 	private String password;
 	
+	/**
+	 * @return id
+	 */
 	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	/**
+	 * @param id
+	 */
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
+	/**
+	 * @return login
+	 */
 	public String getLogin() {
 		return login;
 	}
-	public void setLogin(String login) {
+	/**
+	 * @param login
+	 */
+	public void setLogin(final String login) {
 		this.login = login;
 	}
 
+	/**
+	 * @return password
+	 */
 	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	/**
+	 * @param password
+	 */
+	public void setPassword(final String password) {
 		this.password = password;
 	}
 

@@ -8,6 +8,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
+import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.business.IPoissonService;
 
@@ -35,8 +36,12 @@ public class AjoutAction extends Action {
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 				
-		PoissonVO poissonVO = (PoissonVO) form;	
-		service.add(poissonVO);
+		final PoissonVO poissonVO = (PoissonVO) form;		
+		final PoissonDO poissonDO = service.getPoisson(((PoissonVO) form).getName());
+		
+		if(poissonDO == null) {
+			service.add(poissonVO);
+		}
 		
 		return mapping.findForward(FW_SUCCESS);
 	

@@ -59,6 +59,12 @@ public class PoissonService implements IPoissonService {
 		poissonDao.add(poisson);
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IPoissonService#getPoisson(java.lang.String)
+	 */
+	public PoissonDO getPoisson(final String name) {
+		return  poissonDao.getPoisson(name);
+	}
 	
 	/**
 	 * @param poissonVO

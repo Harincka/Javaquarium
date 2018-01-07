@@ -7,6 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * @author johann
+ *
+ */
 @Entity
 @Table(name="Poisson")
 public class PoissonDO {
@@ -44,7 +48,7 @@ public class PoissonDO {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
@@ -58,7 +62,7 @@ public class PoissonDO {
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -72,7 +76,7 @@ public class PoissonDO {
 	/**
 	 * @param description the description to set
 	 */
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = description;
 	}
 
@@ -86,7 +90,7 @@ public class PoissonDO {
 	/**
 	 * @param couleur the couleur to set
 	 */
-	public void setCouleur(String couleur) {
+	public void setCouleur(final String couleur) {
 		this.couleur = couleur;
 	}
 
@@ -100,7 +104,7 @@ public class PoissonDO {
 	/**
 	 * @param largeur the largeur to set
 	 */
-	public void setLargeur(Float largeur) {
+	public void setLargeur(final Float largeur) {
 		this.largeur = largeur;
 	}
 
@@ -114,7 +118,7 @@ public class PoissonDO {
 	/**
 	 * @param longueur the longueur to set
 	 */
-	public void setLongueur(Float longueur) {
+	public void setLongueur(final Float longueur) {
 		this.longueur = longueur;
 	}
 
@@ -128,7 +132,7 @@ public class PoissonDO {
 	/**
 	 * @param prix the prix to set
 	 */
-	public void setPrix(Integer prix) {
+	public void setPrix(final Integer prix) {
 		this.prix = prix;
 	}
 	

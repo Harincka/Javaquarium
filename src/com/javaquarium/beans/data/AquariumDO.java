@@ -10,6 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * @author johann
+ *
+ */
 @Entity
 @Table(name="Aquarium")
 public class AquariumDO {
@@ -41,7 +45,7 @@ public class AquariumDO {
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
+	public void setId(final Integer id) {
 		this.id = id;
 	}
 
@@ -55,7 +59,7 @@ public class AquariumDO {
 	/**
 	 * @param id_user the id_user to set
 	 */
-	public void setId_user(UserDO id_user) {
+	public void setId_user(final UserDO id_user) {
 		this.id_user = id_user;
 	}
 
@@ -69,7 +73,7 @@ public class AquariumDO {
 	/**
 	 * @param id_poisson the id_poisson to set
 	 */
-	public void setId_poisson(PoissonDO id_poisson) {
+	public void setId_poisson(final PoissonDO id_poisson) {
 		this.id_poisson = id_poisson;
 	}
 	
@@ -83,7 +87,7 @@ public class AquariumDO {
 	/**
 	 * @param somme the somme to set
 	 */
-	public void setSomme(Integer somme) {
+	public void setSomme(final Integer somme) {
 		this.somme = somme;
 	}
 

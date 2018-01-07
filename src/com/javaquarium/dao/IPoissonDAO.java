@@ -19,12 +19,12 @@ public interface IPoissonDAO {
 	 * Classic DAO
 	 * @param poissonDO
 	 */
-	void add(PoissonDO poissonDO);
+	void add(final PoissonDO poissonDO);
 	
 	/**
 	 * @param name
 	 * @return PoissonDO
 	 */
-	PoissonDO getPoisson(String name);
+	PoissonDO getPoisson(final String name);
 
 }

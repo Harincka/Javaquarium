@@ -26,6 +26,7 @@ public class AjoutPoissonAquariumAction extends Action {
 		
 		final String espece = req.getParameter(ESPECE);
 		
+		@SuppressWarnings("unchecked")
 		Map<String, Integer> aquarium = (Map<String, Integer>) req.getSession().getAttribute(AQUARIUM);
 		
 		//Si on a pas d'aquarium, on en créé 1
@@ -41,7 +42,7 @@ public class AjoutPoissonAquariumAction extends Action {
 		aquarium.put(espece, count + 1);
 		
 		//On ajoute le nouvel aquarium en session
-		req.getSession().setAttribute(AQUARIUM, aquarium);
+		req.getSession().setAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM, aquarium);
 		
 		return mapping.findForward(FW_SUCCESS);
 	

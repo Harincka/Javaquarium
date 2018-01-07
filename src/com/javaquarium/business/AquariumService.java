@@ -14,48 +14,60 @@ import com.javaquarium.dao.IUserDAO;
 import com.javaquarium.dao.PoissonDAO;
 import com.javaquarium.dao.UserDAO;
 
+/**
+ * @author johann
+ *	Classic Service
+ */
 public class AquariumService implements IAquariumService{
 
-	private IAquariumDAO dao;
+	private final IAquariumDAO dao;
 	
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IAquariumService#getUserAllAquariumPoisson(java.lang.String)
+	 */
 	@Override
-	public Map<String, Integer> getUserAllAquariumPoisson(String login) {
-		// TODO Auto-generated method stub
+	public Map<String, Integer> getUserAllAquariumPoisson(final String login) {
 		final List<AquariumDO> listAquariumPoisson = dao.getUserAllAquariumPoisson(login);
-		Map<String,Integer> poissons = new HashMap<String,Integer>();
+		final Map<String,Integer> poissons = new HashMap<String,Integer>();
 		
 		//Si notre liste de poisson dans l'aquarium n'est pas vide
 		//On peut aller les rechercher
 		
 		if(listAquariumPoisson != null) {
 			for (AquariumDO aquariumPoisson : listAquariumPoisson) {
-				poissons.put(aquariumPoisson.getId_poisson().getNom(),aquariumPoisson.getSomme());
+				poissons.put(aquariumPoisson.getId_poisson().getName(),aquariumPoisson.getSomme());
 			}
 		}
 		
 		return poissons;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IAquariumService#getUserPoisson(java.lang.String, java.lang.String)
+	 */
 	@Override
-	public AquariumDO getUserPoisson(String login, String espece) {
-		// TODO Auto-generated method stub
+	public AquariumDO getUserPoisson(final String login, final String espece) {
 		return dao.getAquarium(login, espece);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IAquariumService#addAquariumPoisson(java.lang.String, java.lang.String, int)
+	 */
 	@Override
-	public void addAquariumPoisson(String login, String espece, int count) {
-		// TODO Auto-generated method stub
+	public void addAquariumPoisson(final String login, final String espece, int count) {
 		
 		AquariumDO aquariumPoisson = dao.getAquarium(login, espece);
 		
 		//Si le poisson n'existe pas dans l'aquarium on lui donne les paramètres pour l'insérer
 		if(aquariumPoisson == null) {
-			IPoissonDAO poissonDAO = new PoissonDAO();
-			PoissonDO poisson = poissonDAO.getPoisson(espece);
+			
+			aquariumPoisson = new AquariumDO();
+			final IPoissonDAO poissonDAO = new PoissonDAO();
+			final PoissonDO poisson = poissonDAO.getPoisson(espece);
 			
 
-			IUserDAO userDAO = new UserDAO();
-			UserDO user = userDAO.getUser(login);
+			final IUserDAO userDAO = new UserDAO();
+			final UserDO user = userDAO.getUser(login);
 			
 			aquariumPoisson.setId_poisson(poisson);
 			aquariumPoisson.setId_user(user);
@@ -67,13 +79,18 @@ public class AquariumService implements IAquariumService{
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IAquariumService#removeAllAquariumPoisson(java.lang.String)
+	 */
 	@Override
-	public void removeAllAquariumPoisson(String login) {
-		// TODO Auto-generated method stub
+	public void removeAllAquariumPoisson(final String login) {
 		dao.removeAllAquariumPoisson(login);
 		
 	}
 	
+	/**
+	 * AquariumService Constructor
+	 */
 	public AquariumService() {
 		dao = new AquariumDAO();
 	}

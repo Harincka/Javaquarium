@@ -7,18 +7,37 @@ import com.javaquarium.beans.web.UserVO;
 
 /**
  * Interface of PoissonService.
- * 
+ * Classic Service
  * @author seb
  */
 public interface IUserService {
 
+	/**
+	 * @return List<UserDO>
+	 */
 	List<UserVO> getAllUser();
 
-	UserDO map(UserVO user);
+	/**
+	 * @param user
+	 * @return UserDO
+	 */
+	UserDO map(final UserVO user);
 
-	UserVO map(UserDO user);
+	/**
+	 * @param user
+	 * @return UserVO
+	 */
+	UserVO map(final UserDO user);
 
-	void addUser(UserVO user);
+	/**
+	 * @param user
+	 */
+	void addUser(final UserVO user);
 
-	boolean validateLogin(String login, String password);
+	/**
+	 * @param login
+	 * @param password
+	 * @return boolean
+	 */
+	boolean validateLogin(final String login, final String password);
 }

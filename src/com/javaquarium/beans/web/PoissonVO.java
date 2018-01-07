@@ -5,26 +5,25 @@ import org.apache.struts.action.ActionForm;
 public class PoissonVO extends ActionForm {
 
 	private static final long serialVersionUID = -123456789L;
-	private Integer code;
+	private Integer id;
 	private String description;
 	private String couleur;
 	private String dimension;
 	private Integer prix;
-	private String nom;
-	
+	private String name;
 	
 	
 	/**
-	 * @return the code
+	 * @return the id
 	 */
-	public Integer getCode() {
-		return code;
+	public Integer getId() {
+		return id;
 	}
 	/**
-	 * @param code the code to set
+	 * @param id the id to set
 	 */
-	public void setCode(Integer code) {
-		this.code = code;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	
 	/**
@@ -75,12 +74,18 @@ public class PoissonVO extends ActionForm {
 	public void setPrix(Integer prix) {
 		this.prix = prix;
 	}
-	
-	public String getNom() {
-		return nom;
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
-	public void setNom(String nom) {
-		this.nom = nom;
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public PoissonVO(){}
@@ -90,7 +95,7 @@ public class PoissonVO extends ActionForm {
 		this.couleur = couleur;
 		this.dimension = dimension;
 		this.prix = prix;
-		this.nom = nom;
+		this.name = name;
 	}
 	
 

@@ -13,9 +13,9 @@ import com.javaquarium.util.HibernateUtils;
 
 public class AquariumDAO implements IAquariumDAO{
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<AquariumDO> getUserAllAquariumPoisson(String login) {
-		// TODO Auto-generated method stub
 		
 		Session s = HibernateUtils.getSession();
 		
@@ -37,30 +37,32 @@ public class AquariumDAO implements IAquariumDAO{
 
 	@Override
 	public AquariumDO getAquarium(String login, String espece) {
-		// TODO Auto-generated method stub
+		
 		Session s = HibernateUtils.getSession();
 		AquariumDO aquariumPoisson = null;
-		Query q = s.createQuery("from AquariumDO where user_id= :userid and poisson_id= :poissonid");
 		
-		final IUserDAO userDAO = new UserDAO();
-		final UserDO user = userDAO.getUser(login);
-		
-		final IPoissonDAO poissonDAO = new PoissonDAO();
-		final PoissonDO poisson = poissonDAO.getPoisson(espece);
-		
-		q.setString("userid", user.getId().toString());
-		q.setString("poissonid", poisson.getCode().toString());
-		
-		aquariumPoisson = (AquariumDO) q.uniqueResult();
-		
-		s.close();
-		
+		try {
+			Query q = s.createQuery("from AquariumDO where user_id= :userid and poisson_id= :poissonid");
+			
+			final IUserDAO userDAO = new UserDAO();
+			final UserDO user = userDAO.getUser(login);
+			
+			final IPoissonDAO poissonDAO = new PoissonDAO();
+			final PoissonDO poisson = poissonDAO.getPoisson(espece);
+			
+			q.setString("userid", user.getId().toString());
+			q.setString("poissonid", poisson.getId().toString());
+			
+			aquariumPoisson = (AquariumDO) q.uniqueResult();
+			
+		} finally {
+			s.close();
+		}
 		return aquariumPoisson;
 	}
 
 	@Override
 	public void addAquariumPoisson(final AquariumDO aquariumPoisson) {
-		// TODO Auto-generated method stub
 		
 		Session s = HibernateUtils.getSession();
 		
@@ -76,19 +78,19 @@ public class AquariumDAO implements IAquariumDAO{
 
 	@Override
 	public void removeAllAquariumPoisson(String login) {
-		// TODO Auto-generated method stub
 		
 		Session s = HibernateUtils.getSession();
 		
-		final IUserDAO userDAO = new UserDAO();
-		final UserDO user = userDAO.getUser(login);
-		
-		Query q = s.createQuery("delete AquariumDO where user_id= :userid");
-		q.setString("userid",user.getId().toString());
-		q.executeUpdate();
-		
-		s.close();
-		
+		try {
+			final IUserDAO userDAO = new UserDAO();
+			final UserDO user = userDAO.getUser(login);
+			
+			Query q = s.createQuery("delete AquariumDO where user_id= :userid");
+			q.setString("userid",user.getId().toString());
+			q.executeUpdate();
+		}finally {
+			s.close();
+		}
 	}
 
 	

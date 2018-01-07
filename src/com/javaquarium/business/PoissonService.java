@@ -7,6 +7,10 @@ import com.javaquarium.beans.data.PoissonDO;
 import com.javaquarium.beans.web.PoissonVO;
 import com.javaquarium.dao.IPoissonDAO;
 
+/**
+ * @author johann
+ *	Classic Service
+ */
 public class PoissonService implements IPoissonService {
 	
 	private IPoissonDAO poissonDao;
@@ -14,11 +18,14 @@ public class PoissonService implements IPoissonService {
 	/**
 	 * @param poissonDao the poissonDao to set
 	 */
-	public void setPoissonDao(IPoissonDAO poissonDao) {
+	public void setPoissonDao(final IPoissonDAO poissonDao) {
 		this.poissonDao = poissonDao;
 	}
 	
 	
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IPoissonService#createListPoissons()
+	 */
 	@Override
 	public List<PoissonVO> createListPoissons(){
 		
@@ -29,8 +36,8 @@ public class PoissonService implements IPoissonService {
 		for (PoissonDO p : poissonDO){
 			final PoissonVO poissonVO = new PoissonVO();
 			
-			poissonVO.setNom(p.getNom());
-			poissonVO.setCode(p.getCode());
+			poissonVO.setName(p.getName());
+			poissonVO.setId(p.getId());
 			poissonVO.setCouleur(p.getCouleur());
 			poissonVO.setDescription(p.getDescription());
 			poissonVO.setPrix(p.getPrix());
@@ -44,17 +51,24 @@ public class PoissonService implements IPoissonService {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see com.javaquarium.business.IPoissonService#add(com.javaquarium.beans.web.PoissonVO)
+	 */
 	public void add(final PoissonVO poissonVO) {
 		final PoissonDO poisson = map(poissonVO);
 		poissonDao.add(poisson);
 	}
 	
 	
+	/**
+	 * @param poissonVO
+	 * @return PoissonDO
+	 */
 	private PoissonDO map(final PoissonVO poissonVO) {
 		final PoissonDO poisson = new PoissonDO();
-		String[] partsDimension = poissonVO.getDimension().split("x");
+		final String[] partsDimension = poissonVO.getDimension().split("x");
 		
-		poisson.setNom(poissonVO.getNom());
+		poisson.setName(poissonVO.getName());
 		poisson.setPrix(poissonVO.getPrix());
 		poisson.setCouleur(poissonVO.getCouleur());
 		poisson.setLongueur(Float.parseFloat(partsDimension[0]));

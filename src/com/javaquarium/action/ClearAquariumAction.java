@@ -1,5 +1,7 @@
 package com.javaquarium.action;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,10 +22,17 @@ public class ClearAquariumAction extends Action {
 				
 		final String login = (String) req.getSession().getAttribute(com.javaquarium.action.LoginAction.SESSION_USERNAME);
 		
-		IAquariumService service = new AquariumService();
-		//on va supprimer tous les poissons
-		service.removeAllAquariumPoisson(login);
+		@SuppressWarnings("unchecked")
+		Map<String, Integer> aquarium = (Map<String, Integer>) req.getSession().getAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM);
 		
+		
+		IAquariumService service = new AquariumService();
+		
+		//on va supprimer tous les poissons
+		if(aquarium != null){
+			req.getSession().setAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM, null);
+			service.removeAllAquariumPoisson(login);
+		}
 		
 		return mapping.findForward(FW_SUCCESS);
 	

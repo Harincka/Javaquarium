@@ -14,10 +14,10 @@ public class PoissonDO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="id")
-	private Integer code;
+	private Integer id;
 	
 	@Column(name= "name")
-	private String nom;
+	private String name;
 	
 	@Column(name= "description")
 	private String description;
@@ -33,34 +33,33 @@ public class PoissonDO {
 	
 	@Column(name= "prix")
 	private Integer prix;
-	
 
 	/**
-	 * @return the code
+	 * @return the id
 	 */
-	public Integer getCode() {
-		return code;
+	public Integer getId() {
+		return id;
 	}
 
 	/**
-	 * @param code the code to set
+	 * @param id the id to set
 	 */
-	public void setCode(Integer code) {
-		this.code = code;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	/**
-	 * @return the nom
+	 * @return the name
 	 */
-	public String getNom() {
-		return nom;
+	public String getName() {
+		return name;
 	}
 
 	/**
-	 * @param nom the nom to set
+	 * @param name the name to set
 	 */
-	public void setNom(String nom) {
-		this.nom = nom;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

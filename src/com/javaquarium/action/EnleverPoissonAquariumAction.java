@@ -15,10 +15,6 @@ public class EnleverPoissonAquariumAction extends Action {
 	
 	private static final String FW_SUCCESS = "success";
 	
-	private static final String ESPECE = "espece";
-	
-	public static final String AQUARIUM = "aquarium";
-	
 	public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest req,
 			final HttpServletResponse res) {
 
@@ -26,7 +22,7 @@ public class EnleverPoissonAquariumAction extends Action {
 		
 		final String espece = req.getParameter(com.javaquarium.action.AjoutPoissonAquariumAction.ESPECE);
 		
-		Map<String, Integer> aquarium = (Map<String, Integer>) req.getSession().getAttribute(AQUARIUM);
+		Map<String, Integer> aquarium = (Map<String, Integer>) req.getSession().getAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM);
 		
 		//Si on a pas d'aquarium, on en créé 1
 		if(aquarium == null) {
@@ -43,7 +39,7 @@ public class EnleverPoissonAquariumAction extends Action {
 		}
 		
 		//On ajoute le nouvel aquarium en session
-		req.getSession().setAttribute(AQUARIUM, aquarium);
+		req.getSession().setAttribute(com.javaquarium.action.AjoutPoissonAquariumAction.AQUARIUM, aquarium);
 		
 		return mapping.findForward(FW_SUCCESS);
 	
